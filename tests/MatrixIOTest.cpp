@@ -7,7 +7,7 @@
 
 using namespace Eigen;
 
-BOOST_AUTO_TEST_SUITE(TestMatrixIO)
+BOOST_AUTO_TEST_SUITE(MatrixIOTests)
 {
   BOOST_AUTO_TEST_CASE(TestSaveData)
   {
