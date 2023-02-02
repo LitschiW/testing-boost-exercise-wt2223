@@ -40,7 +40,8 @@ jobs:
       run: |
        mkdir build
        cd build
-       Eigen3_ROOT=${GITHUB_WORKSPACE}/eigen3/Eigen &&
+       export EIGEN3_ROOT_DIR=${GITHUB_WORKSPACE}/eigen3/Eigen
+       echo eigen3 root = $EIGEN3_ROOT_DIR
        cmake .. -DCMAKE_C_COMPILER=${{ matrix.compiler }} -DCMAKE_BUILD_TYPE=${{ matrix.mode }}
 
   Test: 
