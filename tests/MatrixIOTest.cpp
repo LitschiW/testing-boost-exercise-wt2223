@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE(TestSaveData)
   matrixIO::saveData("test.csv", matrix);
 
   std::ifstream f("test.csv");
-  bool        file_exists = f.good();
+  bool          file_exists = f.good();
 
   BOOST_TEST(file_exists);
 }
