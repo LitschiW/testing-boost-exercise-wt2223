@@ -2,7 +2,7 @@
 #include <Eigen/Dense>
 #include <boost/test/unit_test.hpp>
 #include "Configuration.hpp"
-#include "MatrixIO.hpp"
+#include "matrixIO.hpp"
 
 #include <fstream>
 
