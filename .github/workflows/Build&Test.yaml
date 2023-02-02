@@ -28,10 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: install dependencies
-      run: sudo apt install cmake libeigen3-dev libyaml-cpp-dev libboost-test-dev
-      
-    - if: ${{ matrix.compiler == 'clang'  }}
-      uses: egor-tensin/setup-clang@v1
+      run: sudo apt install -y cmake clang libeigen3-dev libyaml-cpp-dev libboost-test-dev
       
     - name: Run CMake
       run: |

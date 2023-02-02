@@ -1,9 +1,7 @@
 #define BOOST_TEST_DYN_LINK
 #include <Eigen/Dense>
 #include <boost/test/unit_test.hpp>
-#include "Configuration.hpp"
 #include "matrixIO.hpp"
-
 #include <fstream>
 
 using namespace Eigen;
