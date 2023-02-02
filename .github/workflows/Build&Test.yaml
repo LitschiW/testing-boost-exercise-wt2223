@@ -24,6 +24,7 @@ jobs:
         compiler: ['gcc', 'clang']
         mode: ['Debug', 'Release']
     steps:
+    - uses: actions/checkout@v3
     - if: ${{ matrix.compiler == 'gcc'  }}
       uses: egor-tensin/setup-gcc@v1
     - if: ${{ matrix.compiler == 'clang'  }}
@@ -37,6 +38,7 @@ jobs:
   Test: 
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - uses: lukka/get-cmake@latest
     - run: |
        mkdir build 
