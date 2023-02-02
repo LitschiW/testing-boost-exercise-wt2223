@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run clang-format 
-      uses: jidicula/clang-format-action@v4
+      uses: jidicula/clang-format-action@v4.10.1
       with:
         check-path: ${{ matrix.path }}
 
@@ -32,7 +32,7 @@ jobs:
     - run: |
        mkdir build 
        cd build
-       cmake .. -DCMAKE_C_COMPILER={{ $matrix.compiler }} -DCMAKE_BUILD_TYPE={{ $matrix.mode }}
+       cmake .. -DCMAKE_C_COMPILER=${{ matrix.compiler }} -DCMAKE_BUILD_TYPE=${{ matrix.mode }}
 
   Test: 
     runs-on: ubuntu-latest
@@ -40,6 +40,8 @@ jobs:
     - uses: lukka/get-cmake@latest
     - run: |
        mkdir build 
-       cd build && cmake ..
+       ls -AR
+       cd build
+       cmake ..
     - name: Run Test
       run: make test
