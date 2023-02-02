@@ -31,7 +31,14 @@ BOOST_AUTO_TEST_CASE(TestOpenData)
   matrixIO::saveData("test.csv", matrix);
 
   MatrixXd matrix2 = matrixIO::openData("test.csv", 3);
-  BOOST_TEST(matrix == matrix2);
+  
+  for (int i = 0; i < matrix.rows(); i++)
+  {
+    for (int j = 0; j < matrix.cols(); j++)
+    {
+      BOOST_TEST(matrix(i, j) == matrix2(i, j));
+    }
+  }
 }
 
 BOOST_AUTO_TEST_SUITE_END()
