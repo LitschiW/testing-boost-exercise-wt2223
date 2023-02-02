@@ -15,7 +15,7 @@ jobs:
     - name: Run clang-format 
       uses: jidicula/clang-format-action@latest
       with:
-        check-path: ${{ martrix.path }}
+        check-path: ${{ matrix.path }}
 
   Build:
     runs-on: ubuntu-latest
