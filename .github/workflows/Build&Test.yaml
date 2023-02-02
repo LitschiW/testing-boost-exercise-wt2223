@@ -40,4 +40,4 @@ jobs:
        cd build
        cmake ..
     - name: Run Test
-      run: ./test
+      run: make test
