@@ -8,6 +8,7 @@ jobs:
   Style:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         path: ['src', 'test']
     steps:
@@ -20,6 +21,7 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         compiler: ['gcc', 'clang']
         mode: ['Debug', 'Release']
