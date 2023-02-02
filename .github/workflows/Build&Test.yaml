@@ -24,7 +24,10 @@ jobs:
         compiler: ['gcc', 'clang']
         mode: ['Debug', 'Release']
     steps:
-    - uses: egor-tensin/setup-{{ $matrix.complier }}@latest
+    - if: ${{ matrix.compiler == 'gcc'  }}
+      uses: egor-tensin/setup-gcc@latest
+    - if: ${{ matrix.compiler == 'clang'  }}
+      uses: egor-tensin/setup-clang@latest
     - uses: lukka/get-cmake@latest
     - run: |
        mkdir build 
