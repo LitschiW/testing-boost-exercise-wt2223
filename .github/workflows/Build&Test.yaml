@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        path: ['src', 'test']
+        path: [ 'src',  'test']
     steps:
     - uses: actions/checkout@v3
     - name: Run clang-format 
-      uses: jidicula/clang-format-action@v4.10.1
+      uses: jidicula/clang-format-action@latest
       with:
         check-path: ${{ martrix.path }}
 
   Build:
     runs-on: ubuntu-latest
-    stratey:
+    strategy:
       matrix:
         compiler: ['gcc', 'clang']
         mode: ['Debug', 'Release']
