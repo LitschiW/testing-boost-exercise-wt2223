@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: install dependencies
-        run: sudo apt install -y cmake clang libeigen3-dev libyaml-cpp-dev libboost-test-dev
+        run: sudo apt install -y cmake ${{ matrix.compiler.c }} libeigen3-dev libyaml-cpp-dev libboost-test-dev
 
       - name: Run CMake
         run: |
