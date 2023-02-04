@@ -1,0 +1,54 @@
+name: C/C++ CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  Style:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        path: ["src", "test"]
+        version: [10, 13, 15]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run clang-format
+        uses: jidicula/clang-format-action@v4.10.1
+        with:
+          check-path: ${{ matrix.path }}
+          clang-format-version: ${{ matrix.version }}
+
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [{ c: gcc, cpp: g++ }, { c: clang, cpp: clang++ }]
+        mode: ["Debug", "Release"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: install dependencies
+        run: sudo apt install -y cmake ${{ matrix.compiler.c }} libeigen3-dev libyaml-cpp-dev libboost-test-dev
+
+      - name: Run CMake
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_C_COMPILER=${{ matrix.compiler.c }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler.cpp }} -DCMAKE_BUILD_TYPE=${{ matrix.mode }}
+          make
+
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install dependencies
+        run: sudo apt install cmake libeigen3-dev libyaml-cpp-dev libboost-test-dev
+      - name: Run Tests
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+          make test

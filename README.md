@@ -1,3 +1,5 @@
+[![C/C++ CI](https://github.com/LitschiW/testing-boost-exercise-wt2223/actions/workflows/Build&Test.yaml/badge.svg)](https://github.com/LitschiW/testing-boost-exercise-wt2223/actions/workflows/Build&Test.yaml)
+
 # SIDEMADE - Simple Dense Matrix Decomposition
 
 A simple demo code to read dense matrices from files and solve linear systems with them.
