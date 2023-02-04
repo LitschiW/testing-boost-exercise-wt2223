@@ -1,8 +1,8 @@
 #define BOOST_TEST_DYN_LINK
-#include <boost/test/unit_test.hpp>
 #include <Eigen/Dense>
-#include "matrixIO.hpp"
+#include <boost/test/unit_test.hpp>
 #include <fstream>
+#include "matrixIO.hpp"
 
 using namespace Eigen;
 
@@ -31,11 +31,9 @@ BOOST_AUTO_TEST_CASE(TestOpenData)
   matrixIO::saveData("test.csv", matrix);
 
   MatrixXd matrix2 = matrixIO::openData("test.csv", 3);
-  
-  for (int i = 0; i < matrix.rows(); i++)
-  {
-    for (int j = 0; j < matrix.cols(); j++)
-    {
+
+  for (int i = 0; i < matrix.rows(); i++) {
+    for (int j = 0; j < matrix.cols(); j++) {
       BOOST_TEST(matrix(i, j) == matrix2(i, j));
     }
   }
